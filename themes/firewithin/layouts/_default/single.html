@@ -2,7 +2,6 @@
 <html lang="{{ .Site.LanguageCode }}" dir="ltr" color-mode="{{ .Site.Params.defaultColorMode }}">
 {{ partialCached "head.html" . }}
 <body class="container">
-  {{ partialCached "nav-bar.html" . }}
 
   {{- $title := .Title -}}{{- if eq $title "" -}}{{- $title = humanize .File.BaseFileName -}}{{- end -}}
   <section class="container-center">

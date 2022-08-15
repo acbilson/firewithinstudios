@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="{{ .Site.LanguageCode }}" dir="ltr" color-mode="{{ .Site.Params.defaultColorMode }}">
+{{ partialCached "head.html" . }}
+<body class="container">
+
+	{{- partialCached "menu.html" . -}}
+
+  <section class="basic-page container-content">
+		{{- with .Title -}}
+		 <h1 class="basic-page__title">{{- . -}}</h1>
+		{{- end -}}
+  {{- with .Content -}}
+    <div class="home-page__content">
+		 <p>{{- . -}}</p>
+	 </div>
+  {{- end -}}
+
+    <div class="basic-page__content">
+    {{- range .Pages -}}
+      {{- .Render "li" -}}
+    {{- end -}}
+    </div>
+  </section>
+
+  {{ partialCached "scripts.html" . }}
+</body>
+</html>
