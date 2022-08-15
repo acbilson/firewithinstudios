@@ -1,9 +1,0 @@
-{{- $author := "Alex Bilson" -}}{{- if isset .Params "author" -}}{{- $author = .Params.author -}}{{- end -}}
-<article class="log-card">
-  <ul class="log-card__list">
-    <li><time datetime="{{ .Date.Format "2006-01-02" }}">{{ .Date.Format "2006-01-02" }}</time></li>
-    <li><a rel="author" class="log-card__link p-author">{{- $author -}}</a></li>
-    <li><a class="log-card__link" href="{{ .Permalink }}" rel="bookmark">⚓</a></li>
-  </ul>
-  <div class="log-card__content e-content">{{- .Content -}}</div>
-</article>

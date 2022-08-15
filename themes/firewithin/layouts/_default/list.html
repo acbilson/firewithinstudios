@@ -2,10 +2,11 @@
 <html lang="{{ .Site.LanguageCode }}" dir="ltr" color-mode="{{ .Site.Params.defaultColorMode }}">
 {{ partialCached "head.html" . }}
 <body class="container">
-  {{ partialCached "nav-bar.html" . }}
+
+	{{- partialCached "menu.html" . -}}
 
   {{- $class := "basic-page" -}}{{- if .IsHome -}}{{- $class = "home" -}}{{- end -}}
-  <section class="{{ $class }} container-center">
+  <section class="{{ $class }} container-content">
   {{- with .Title -}}
     <h1 class="basic-page__title">{{- . -}}</h1>
   {{- end -}}
@@ -24,7 +25,6 @@
   {{- end -}}
   </section>
 
-  {{ partialCached "foot.html" . }}
   {{ partialCached "scripts.html" . }}
 </body>
 </html>

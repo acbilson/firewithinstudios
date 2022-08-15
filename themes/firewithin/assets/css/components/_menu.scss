@@ -1,8 +1,8 @@
 $btn-padding: 0.8em 1.5em;
-.nav-bar {
+.nav-menu {
 	display: flex;
 	flex-flow: column nowrap;
-	background-color: transparent;
+	background-color: green;
 
 	> * + * {
 		margin-top: $base-size * 4;
