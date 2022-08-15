@@ -1,7 +1,7 @@
 .container {
 	display: grid;
 	// columns have two variable sidebar slots and fills the center
-	grid-template-columns: [leftedge] 10% [leftbar] 90% [content] [rightedge];
+	grid-template-columns: [leftedge] 20% [leftbar] 80% [rightedge];
 
 	// centers cell contents by default
 	place-items: center;
@@ -23,11 +23,26 @@
 
 	@media screen and (max-width: $breakpoint-lg) {
 		// columns have two variable sidebar slots and fills the center
-		grid-template-columns: [leftedge] 10% [leftbar] 90% [content] [rightedge];
+		grid-template-columns: [leftedge] 20% [leftbar] 80% [rightedge];
 	}
 
 	@media screen and (max-width: $breakpoint-md) {
 		// columns have two variable sidebar slots and fills the center
-		grid-template-columns: [leftedge] 10% [leftbar] 90% [content] [rightedge];
+		grid-template-columns: [leftedge] 100% [rightedge];
+		grid-template-rows: [topedge] 200px [topbar] 1fr [bottomedge];
+
+		&-menu {
+			grid-column-start: leftedge;
+			grid-column-end: rightedge;
+			grid-row-start: topedge;
+			grid-row-end: topbar;
+		}
+
+		&-content {
+			grid-column-start: leftedge;
+			grid-column-end: rightedge;
+			grid-row-start: topbar;
+			grid-row-end: bottomedge;
+		}
 	}
 }

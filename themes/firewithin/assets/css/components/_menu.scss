@@ -1,79 +1,39 @@
-$btn-padding: 0.8em 1.5em;
-.nav-menu {
-	display: flex;
-	flex-flow: column nowrap;
-	background-color: green;
+.menu {
+	width: 100%;
 
-	> * + * {
-		margin-top: $base-size * 4;
+	ul {
+		display: flex;
+		flex-flow: column nowrap;
+		background-color: green;
 	}
 
-	// menu button at bottom of screen
-	// only shows for small screens
-	&__btn {
-		display: none;
-		padding: $btn-padding;
-		position: fixed;
-		bottom: 0px;
-		left: 50%;
+	li {
+		list-style: none;
 	}
 
-	&__link {
+	li.main {
+		background-color: blue;
+	}
+
+	a {
 		font-family: $font-family-condensed;
 		font-size: $font-md - $base-size;
 		text-decoration: none;
 		white-space: nowrap;
 		width: 100%;
-		padding: $base-size;
-		color: var(--color-background);
-		background-color: var(--color-link);
-		border: 1px solid var(--color-stroke);
-		border-radius: $rounded-sm;
-		@include hover-sm;
 		&:hover {
-			border-color: var(--color-background);
-		}
-	}
-	&__select {
-		font-family: $font-family-condensed;
-		font-size: $font-md - $base-size;
-		margin-top: -$base-size;
-		color: var(--color-background);
-		background-color: var(--color-link);
-		border-color: var(--color-stroke);
-		border-radius: $rounded-sm;
-		&:hover {
-			border-color: var(--color-background);
+			color: orange;
 		}
 	}
 
 	@media screen and (max-width: $breakpoint-md) {
+		ul {
+
 		flex-flow: row wrap;
-
-		> * + * {
-			margin-top: unset;
 		}
 
-		> *:not(#navtoggle) {
-			margin: $base-size * 8;
-		}
-
-		// shows button
-		&__btn {
-			display: block;
-		}
-
-		&__link {
-			padding: $btn-padding;
-		}
-
-		// makes everything but button transparent
-		> :not(.nav-bar__btn) {
-			display: none;
-			//opacity: 0;
-			// disables link clicks when invisible
-			//pointer-events: none;
-			//filter: none;
+		a {
+			padding: 0.8em 1.5em;
 		}
 	}
 }
