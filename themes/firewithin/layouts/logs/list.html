@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="{{ .Site.LanguageCode }}" dir="ltr" color-mode="{{ .Site.Params.defaultColorMode }}">
+{{ partialCached "head.html" . }}
+<body class="container">
+  {{ partialCached "nav-bar.html" . }}
+
+  <section class="log-page container-center">
+
+	<h1 class="log-page__title">{{- .Title -}}</h1>
+
+	<!-- adds experimental feature On This Day -->
+	<button type="button" id="show-on-this-day">Show On This Day</button>
+	 <div id="on-this-day" hidden>
+		 <h2>On This Day</h2>
+	 </div>
+
+    <div class="log-page__content">{{- .Content -}}</div>
+
+    <!-- at the top level, shows the last six months of logs with archive links -->
+    {{- if eq .CurrentSection .FirstSection -}}
+
+      {{- range .RegularPagesRecursive -}}
+	{{- if ge .Date (now.AddDate 0 -6 0) -}}
+	  {{ .Render "li" }}
+	{{- end -}}
+      {{- end -}}
+
+      <div class="log-page__archive">
+	<h2>Archives</h2>
+	<div class="log-page__archive-list">
+	{{- range .Sections -}}
+	  <a href="{{ .Permalink }}">{{- .Title -}}</a>
+	{{- end -}}
+	</div>
+      </div>
+
+    <!-- at subsequent levels, show all logs at and below the log folder route -->
+    {{- else -}}
+      {{- range .RegularPagesRecursive -}}
+	  {{ .Render "li" }}
+      {{- end -}}
+    {{- end -}}
+
+  </section>
+
+  {{ partialCached "foot.html" . }}
+  {{ partialCached "scripts.html" . }}
+
+	<!-- adds event handler to display an on this day -->
+	{{- $onthisdayjs := resources.Get "js/on-this-day.js" -}}
+	<script src="{{ $onthisdayjs.Permalink }}"></script>
+
+</body>
+</html>

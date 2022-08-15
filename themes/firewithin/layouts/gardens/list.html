@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="{{ .Site.LanguageCode }}" dir="ltr" color-mode="{{ .Site.Params.defaultColorMode }}">
+{{ partialCached "head.html" . }}
+<body class="container">
+  {{ partialCached "nav-bar.html" . }}
+
+  <section class="garden-page container-full">
+	  <div class="garden-page__content">{{ .Content }}</div>
+
+    <!-- for debug purpose only -->
+    {{- $stroke := "none" -}}
+
+    <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0, 0, 1275, 1200">
+      <image class="garden-page__background" width="1275" height="1200" href="/data/img/garden-background.png"></image>
+
+    {{- range .Pages -}}
+      {{- $title := .Title -}}{{- if eq $title "" -}}{{- $title = humanize .File.BaseFileName -}}{{- end -}}
+      {{- if isset .Params "coordinates" -}}
+        {{- $startX := .Params.coordinates.x }}
+        {{- $startY := .Params.coordinates.y }}
+        {{- $vertical := or .Params.coordinates.vertical false -}}
+
+        <!-- step defines the length of the text path and surrounding rectangle -->
+        <!-- bend defines the quadratic curve. can be a negative or positive number -->
+        {{- $step := or .Params.coordinates.step 60 }}
+        {{- $bend := or .Params.coordinates.bend 20 -}}
+      {{- if eq $vertical true -}}
+        <path
+          id="{{ .File.BaseFileName }}"
+          d="M {{ $startX }},{{ $startY }} Q {{ add $startX $bend }},{{ add $startY $step }} {{ $startX }},{{ add (add $startY $step) $step }}"
+          stroke="{{ $stroke }}"
+          fill="transparent"
+        />
+      {{- else -}}
+        <path
+          id="{{ .File.BaseFileName }}"
+          d="M {{ $startX }},{{ $startY }} Q {{ add $startX $step }},{{ sub $startY $bend }} {{ add (add $startX $step) $step }},{{ $startY }}"
+          stroke="{{ $stroke }}"
+          fill="transparent"
+        />
+      {{- end -}}
+      <a class="garden-page__link" href="{{ .Permalink }}">
+      {{- if eq $vertical true -}}
+        <rect
+	  class="garden-page__box"
+          x="{{ sub $startX (div $bend 2) }}"
+          y="{{ sub $startY (div $bend 2) }}"
+          width="{{ add $bend $bend }}"
+          height="{{ add (add $step $step) $bend }}"
+          stroke="{{ $stroke }}"
+          fill="transparent"
+        />
+      {{- else -}}
+        <rect
+	  class="garden-page__box"
+          x="{{ sub $startX (div $bend 2) }}"
+          y="{{ sub $startY (mul $bend 1.5) }}"
+          width="{{ add (add $step $step) $bend }}"
+          height="{{ add $bend $bend }}"
+          stroke="{{ $stroke }}"
+          fill="transparent"
+        />
+      {{- end -}}
+        <text>
+          <textPath xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#{{- .File.BaseFileName -}}">
+            {{ $title }}
+          </textPath>
+        </text>
+      </a>
+    {{- end -}}
+  {{- end -}}
+    </svg>
+  </section>
+  {{ partialCached "foot.html" . }}
+  {{ partialCached "scripts.html" . }}
+</body>
+</html>

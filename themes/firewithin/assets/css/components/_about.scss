@@ -1,0 +1,12 @@
+.about__enneagram {
+	display: flex;
+	flex-flow: row nowrap;
+	justify-content: space-evenly;
+
+	figure {
+		//width: 50%;
+	}
+	@media screen and (max-width: $breakpoint-md) {
+		flex-flow: column nowrap;
+	}
+}

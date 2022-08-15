@@ -1,0 +1,56 @@
+<header class="container-header">
+	<nav id="navbar" class="nav-bar">
+	  <div>
+		 <a class="nav-bar__link" href="{{ .Site.BaseURL }}">Home</a>
+	  </div>
+	  <div>
+		 <a class="nav-bar__link" href="{{ .Site.BaseURL }}/gardens/">Gardens</a>
+	  </div>
+	  <div>
+		 <a class="nav-bar__link" href="{{ .Site.BaseURL }}/plants/">Plants</a>
+	  </div>
+	  <div>
+		 <a class="nav-bar__link" href="{{ .Site.BaseURL }}/stones/">Stones</a>
+	  </div>
+	  <div>
+		 <a class="nav-bar__link" href="{{ .Site.BaseURL }}/logs/">Logs</a>
+	  </div>
+	  <div>
+		 <a class="nav-bar__link" href="{{ .Site.BaseURL }}/blogroll/">Roll</a>
+	  </div>
+	  <div>
+		 <a class="nav-bar__link" href="{{ .Site.BaseURL }}/resume/">Resumé</a>
+	  </div>
+	  <div>
+		 <a class="nav-bar__link" href="{{ .Site.BaseURL }}/about/">About</a>
+	  </div>
+	  <div>
+		 <a class="nav-bar__link" href="{{ .Site.BaseURL }}/network/">Network</a>
+	  </div>
+	  <div>
+		 <a class="nav-bar__link" href="{{ .Site.BaseURL }}/tags/">Tags</a>
+	  </div>
+	  <div>
+		 <a class="nav-bar__link" href="{{ .Site.BaseURL }}/authors/">Authors</a>
+	  </div>
+	  <div>
+		 <a class="nav-bar__link" href="{{ .Site.BaseURL }}/quips/">Quips</a>
+	  </div>
+	  <div>
+		 <a class="nav-bar__link" href="{{ .Site.BaseURL }}/search/">Search</a>
+	  </div>
+	  <div>
+		 <a class="nav-bar__link" href="{{ .Site.BaseURL }}/style/">Style</a>
+	  </div>
+
+	  {{- $themes := (slice "jungle" "void" "fall" "minimal") -}}
+	  <div>
+		 <select id="nav-switch" class="nav-bar__select">
+		  {{- range $themes -}}
+			  <option value="{{ . }}">{{ . | title }}</option>
+		  {{- end -}}
+		 </select>
+	  </div>
+		<button id="navtoggle" type="button" class="nav-bar__btn">MENU</button>
+	</nav>
+</header>

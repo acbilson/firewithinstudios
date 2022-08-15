@@ -1,0 +1,5 @@
+{{- $name := .Get "name" -}}
+<details class="accordion">
+  <summary class="accordion__title">{{- $name -}}...</summary>
+  <div class="accordion__text">{{- .Inner -}}</div>
+</details>

@@ -1,0 +1,37 @@
+.stone-entry {
+    &__title { @include title-heading; }
+    &__ref {
+        color: var(--color-paragraph);
+        font-size: $font-md;
+        text-align: right;
+    }
+    &__source {
+        font-style: italic;
+    }
+    &__tags {
+        text-align: center;
+    }
+    &__link+&__link {
+        margin: 0 $base-size;
+    }
+    &__link:last-of-type {
+        margin-right: 0;
+    }
+    &__link:first-of-type {
+        margin-left: $base-size;
+    }
+}
+
+.stone-card {
+    &__title {
+        line-height: 1.2;
+    }
+    &__link {
+        text-decoration: none;
+        text-transform: capitalize;
+    }
+    &__summary {
+        text-align: unset;
+        color: var(--color-paragraph);
+    }
+}

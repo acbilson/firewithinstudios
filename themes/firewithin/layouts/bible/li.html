@@ -1,0 +1,7 @@
+{{- $title := .Title -}}{{- if eq $title "" -}}{{- $title = humanize .File.BaseFileName -}}{{- end -}}
+{{- $version := "ESV" -}}{{- if isset .Params "version" -}}{{- $version = .Params.version -}}{{- end -}}
+<article class="bible-card">
+  <h2 class="bible-card__title"><a class="bible-card__link" href="{{ .Permalink }}">{{- $title -}}</a></h2>
+  <p class="bible-card__src">(<span class="bible-card__version">{{- $version -}}</span>, {{ .Params.ref }})</p>
+  <p class="bible-card__summary">{{- .Summary -}}{{- if .Truncated -}}&mldr;{{- end -}}</p>
+</article>

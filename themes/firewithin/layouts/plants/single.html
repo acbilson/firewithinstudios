@@ -1,0 +1,29 @@
+{{- $author := "Alex Bilson" -}}{{- if isset .Params "author" -}}{{- $author = .Params.author -}}{{- end -}}
+{{- $title := .Title -}}{{- if eq $title "" -}}{{- $title = humanize .File.BaseFileName -}}{{- end -}}
+{{- $path := strings.TrimSuffix ".md" (printf "/%s" .File.Path) -}}
+<!DOCTYPE html>
+<html lang="{{ .Site.LanguageCode }}" dir="ltr" color-mode="{{ .Site.Params.defaultColorMode }}">
+{{ partialCached "head.html" . }}
+<body class="container">
+  {{ partialCached "nav-bar.html" . }}
+
+  <section class="container-center">
+    <article class="plant-entry h-entry">
+
+	<h1 class="plant-entry__title p-name">{{ $title }}</h1>
+	<a class="u-url" href="{{ .Permalink }}" hidden></a>
+
+	<div class="plant-entry__content e-content">
+	    {{ .Content }}
+	</div>
+
+      {{ partial "backlink.html" . }}
+      {{ partial "comments.html" . }}
+      {{ partial "attributes.html" . }}
+    </article>
+  </section>
+
+  {{ partialCached "foot.html" . }}
+  {{ partialCached "scripts.html" . }}
+</body>
+</html>

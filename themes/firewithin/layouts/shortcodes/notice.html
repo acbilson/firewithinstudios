@@ -1,0 +1,26 @@
+{{- $type := .Get "type" -}}
+{{- $name := .Get "name" -}}
+{{- $src := .Get "src" -}}
+
+{{- $icon := "ℹ️" -}}
+{{- if eq $type "warning" -}}{{- $icon = "⚠️" -}}{{- end -}}
+{{- if eq $type "quote" -}}{{- $icon = "💬" -}}{{- end -}}
+
+{{- $length := "short" -}}
+{{- if eq (.Get "long") true -}}
+  {{- $length = "long" -}}
+{{- end -}}
+
+<div class="notice notice--is-{{$length}}">
+  <hr class="notice__top"/>
+  <p class="notice__header">{{$icon}}</p>
+  <p class="notice__text">{{- .Inner -}}</p>
+  {{- if ne $name "" -}}
+    {{- if ne $src "" -}}
+    <p class="notice__ref"><a href="{{$src}}">{{- $name -}}</a></p>
+    {{- else -}}
+    <p class="notice__ref">{{- $name -}}</p>
+    {{- end -}}
+  {{- end -}}
+  <hr class="notice__bottom"/>
+</div>

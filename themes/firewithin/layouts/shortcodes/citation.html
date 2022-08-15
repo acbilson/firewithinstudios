@@ -1,0 +1,12 @@
+{{- $title := or (.Get "title") "Citations" -}}
+{{- $lines := split .Inner "\n" -}}
+<div class="addendum">
+    <h2 class="addendum__title">{{- $title -}}<a name="citation"></a></h2>
+    <ul class="addendum__list">
+    {{- range $idx, $line := $lines -}}
+        {{- if ne $line "" -}}
+        <li class="addendum__item">{{- $line -}}</li>
+        {{- end -}}
+    {{- end -}}
+    </ul>
+</div>

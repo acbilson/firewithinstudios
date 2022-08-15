@@ -1,0 +1,8 @@
+{{- $name := .Get "name" -}}
+{{- $loc := .Get "loc" -}}
+{{- $link := or (.Get "link") "citation" -}}
+{{- if ne $loc "" -}}
+    {{- $loc = printf ", %s" $loc -}}
+{{- end -}}
+<span>(<a href="#{{ $link }}">{{- $name -}}</a>{{- $loc -}})</span>
+{{- print "" -}}

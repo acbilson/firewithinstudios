@@ -1,0 +1,14 @@
+{{- $author := .Get "author" -}}
+{{- $copyright := .Get "copyright" -}}
+{{- $page := .Get "page" -}}
+{{- $source := .Get "source" -}}
+
+{{ .Inner | markdownify }}
+
+<div class="quote__ref">
+  -
+  <span class="quote__author">{{- $author -}}.</span>
+  <span class="quote__copyright">({{- $copyright -}})</span>
+  <span class="quote__source">{{- $source -}}</span>
+  <span class="quote__page">pg. {{- $page -}}</span>
+</div>

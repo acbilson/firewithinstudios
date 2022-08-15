@@ -1,0 +1,21 @@
+{{- $title := .Title -}}{{- if eq $title "" -}}{{- $title = humanize .File.BaseFileName -}}{{- end -}}
+{{- $version := "ESV" -}}{{- if isset .Params "version" -}}{{- $version = .Params.version -}}{{- end -}}
+<!DOCTYPE html>
+<html lang="{{ .Site.LanguageCode }}" dir="ltr" color-mode="{{ .Site.Params.defaultColorMode }}">
+{{ partialCached "head.html" . }}
+<body class="container">
+  {{ partialCached "nav-bar.html" . }}
+
+  <section class="container-center">
+    <article class="bible-entry h-entry">
+      <h1 class="bible-entry__title p-name">{{- $title -}}</h1>
+      <a class="u-url" href="{{ .Permalink }}" hidden></a>
+      <h3 class="bible-entry__src">(<span class="bible-entry__version">{{- $version -}}</span>, {{ .Params.ref }})</h3>
+      <div class="bible-entry__content e-content">{{- .Content -}}</div>
+    </article>
+  {{ partial "backlink.html" . }}
+  </section>
+  {{ partialCached "foot.html" . }}
+  {{ partialCached "scripts.html" . }}
+</body>
+</html>

@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="{{ .Site.LanguageCode }}" dir="ltr" color-mode="{{ .Site.Params.defaultColorMode }}">
+{{ partialCached "head.html" . }}
+<body class="container">
+  {{ partialCached "nav-bar.html" . }}
+
+  {{- $title := .Title -}}{{- if eq $title "" -}}{{- $title = humanize .File.BaseFileName -}}{{- end -}}
+  <section class="container-center">
+  <article class="basic h-entry">
+    <h1 class="basic__title p-name">{{ $title }}</h1>
+    <a class="u-url" href="{{ .Permalink }}" hidden></a>
+
+    <!-- Post Table of Contents -->
+    {{ if isset .Params "toc" -}}
+      <div class="basic__toc">
+        <h2>Contents</h2>
+        {{ .TableOfContents }}
+      </div>
+    {{- end }}
+
+    <div class="basic__content e-content">
+        {{ .Content }}
+    </div>
+  </article>
+  </section>
+  {{ partialCached "foot.html" . }}
+  {{ partialCached "scripts.html" . }}
+</body>
+</html>

@@ -1,0 +1,77 @@
+@mixin title-heading {
+	text-transform: capitalize;
+	font-size: $font-xl;
+}
+
+body {
+	-moz-osx-font-smoothing: grayscale;
+	word-break: break-word;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+	font-family: $font-family-condensed;
+	color: var(--color-headline);
+}
+
+p {
+	font-family: $font-family-regular;
+	font-size: $font-md;
+	line-height: $font-lg;
+	text-align: justify;
+	color: var(--color-paragraph);
+}
+
+pre {
+	> code {
+		font-family: $font-family-mono;
+		font-size: $font-md;
+		line-height: $font-lg;
+		word-break: normal;
+	}
+}
+
+blockquote {
+	font-size: $font-md;
+	line-height: $font-lg;
+	background-color: var(--color-paragraph);
+	> p {
+		color: var(--color-background);
+	}
+}
+
+a {
+	color: var(--color-link);
+	font-family: $font-family-regular;
+	font-size: $font-md;
+}
+
+ul,
+ol {
+	font-family: $font-family-regular;
+	font-size: $font-md;
+	color: var(--color-paragraph);
+	line-height: $font-lg;
+}
+
+figcaption {
+	font-family: $font-family-regular;
+	font-style: italic;
+	line-height: $font-lg;
+	color: var(--color-aside);
+}
+
+details {
+	font-family: $font-family-regular;
+	font-size: $font-md;
+}
+
+form {
+	font-family: $font-family-regular;
+	font-size: $font-md;
+	line-height: $font-lg;
+}

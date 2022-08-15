@@ -1,0 +1,59 @@
+{{ $tagpagejs := resources.Get "js/tag-page.js" }}
+<!DOCTYPE html>
+<html lang="{{ .Site.LanguageCode }}" dir="ltr" color-mode="{{ .Site.Params.defaultColorMode }}">
+{{- partialCached "head.html" . -}}
+<body class="container">
+  {{- partialCached "nav-bar.html" . -}}
+  {{- $root := .Data.Plural -}}
+
+  <section class="terms-page container-full">
+    <h1>{{- .Title -}}</h1>
+  {{- if ne $root "authors" -}}
+    <form id="term-form" name="termsForm" class="terms-page__form" action='{{ with .GetPage "/tags" }}{{ .Permalink }}{{ end }}' method=get>
+      <select name="minimum">
+	<option value="0">&gt; 0 (All)</option>
+	<option value="1">&gt; 1</option>
+	<option value="3">&gt; 3</option>
+	<option value="5">&gt; 5</option>
+	<option value="10">&gt; 10</option>
+      </select>
+    <input type="submit" value="Filter"/>
+    </form>
+  {{- end -}}
+
+    <div id="terms-list" class="terms-page__terms">
+
+    <!-- retrieves every tag, ordered alphabetically -->
+    {{- range $term := .Data.Terms.Alphabetical -}}
+
+    <!-- counts the number of plants and stones for all pages except authors -->
+    {{- $stoneCount := 0 -}}
+    {{- $plantCount := 0 -}}
+    {{- if ne $root "authors" -}}
+      {{- range .Pages -}}
+        {{ if hasPrefix .File.Dir "stones" }}{{- $stoneCount = add 1 $stoneCount -}}{{- end -}}
+        {{ if hasPrefix .File.Dir "plants" }}{{- $plantCount = add 1 $plantCount -}}{{- end -}}
+      {{- end -}}
+    {{- end -}}
+
+    <!-- retrieves every tag page for simple links -->
+      {{- $path := path.Join $root .Term -}}
+
+      {{- with $.Site.GetPage $path -}}
+        <div>
+          {{- if ne $root "authors" -}}
+          <a href="{{ .Permalink }}">{{- .Title -}}<sup>({{- $plantCount -}}/{{- $stoneCount -}})</sup></a>
+          {{- else -}}
+          <a href="{{ .Permalink }}">{{- .Title -}}<sup>({{- $term.Count -}})</sup></a>
+          {{- end -}}
+        </div>
+      {{- end -}}
+    {{- end -}}
+    </div>
+  </section>
+
+  {{- partialCached "foot.html" . -}}
+  {{- partialCached "scripts.html" . -}}
+  <script src="{{ $tagpagejs.Permalink }}"></script>
+  </body>
+</html>

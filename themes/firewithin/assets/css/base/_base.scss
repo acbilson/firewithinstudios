@@ -1,0 +1,113 @@
+body {
+	box-sizing: border-box;
+	background-color: var(--color-background);
+}
+
+header {
+	z-index: 3;
+	margin-top: $base-size * 5;
+}
+
+footer {
+	div {
+		display: flex;
+		flex-flow: row nowrap;
+		justify-content: space-between;
+	}
+
+}
+
+iframe {
+	// fits iframe within container
+	width: 100%;
+}
+
+section {
+	width: 100%;
+
+	> h1:first-of-type {
+		font-size: $font-xl;
+		text-align: center;
+	}
+	> * {
+		padding: 0 $base-size * 3;
+	}
+}
+
+article {
+	> h1:first-of-type {
+		font-size: $font-xl;
+		text-align: center;
+	}
+}
+
+pre {
+	> code {
+		display: block;
+		border: $base-size solid var(--color-stroke);
+		border-radius: $rounded-sm;
+		overflow-x: auto;
+		padding: 5px;
+	}
+}
+
+blockquote {
+	background-color: var(--color-background);
+	border: $base-size solid var(--color-stroke);
+	border-radius: $rounded-sm;
+	padding: $base-size * 2;
+	p {
+		display: inline;
+	}
+}
+
+hr {
+	border: 0;
+	border-bottom: thin solid var(--color-stroke);
+	margin: ($base-size * 5) 0;
+	clear: both;
+}
+
+input[type="submit"] {
+	color: var(--color-background);
+	background-color: var(--color-link);
+	border-color: var(--color-stroke);
+	border-radius: $rounded-sm;
+	padding: $base-size;
+	@include hover-sm();
+}
+
+button {
+	color: var(--color-background);
+	background-color: var(--color-link);
+	border-color: var(--color-stroke);
+	border-radius: $rounded-sm;
+	@include hover-sm();
+}
+
+select {
+	color: var(--color-background);
+	background-color: var(--color-link);
+	border-color: var(--color-stroke);
+	border-radius: $rounded-sm;
+	@include hover-sm();
+}
+
+img {
+	display: block;
+	width: 100%;
+	height: auto;
+	margin: ($base-size * 5) 0;
+	border-radius: $rounded-sm;
+	@include hover-md();
+}
+
+video {
+	display: block;
+	margin: auto;
+	border: 1px solid var(--color-stroke);
+}
+
+figcaption {
+	text-align: center;
+}

@@ -1,0 +1,16 @@
+{{- $title := .Get "title" -}}
+{{- $src := .Get "src" -}}
+<div class="poetry">
+  {{- with $title -}}<h3 class="poetry__title">{{- . -}}</h3>{{- end -}}
+  <div class="poetry__content">
+    {{- $lines := split .Inner "\n" -}}
+    {{- range $lines -}}
+      {{- if ne . "" -}}
+        <p>{{- . -}}</p>
+      {{- end -}}
+    {{- end -}}
+    {{- with $src -}}
+      <p>- ({{- . -}})</p>
+    {{- end -}}
+  </div>
+</div>

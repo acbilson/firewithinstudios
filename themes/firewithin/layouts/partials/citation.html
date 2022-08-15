@@ -1,0 +1,13 @@
+<div class="stone-entry__ref">
+  -
+  <span class="stone-entry__author">{{- delimit .Params.authors "," -}}.</span>
+  <span class="stone-entry__copyright">({{- .Params.copyright -}})</span>
+  <span class="stone-entry__source">{{- .Params.source -}}.</span>
+  {{- if isset .Params "page" -}}
+    {{- $page := printf " pg. %s" .Params.page -}}
+    {{- if in "Preface Foreword" .Params.page -}}
+	    {{- $page = .Params.page -}}
+    {{- end -}}
+  <span class="stone-entry__page">{{- $page -}}</span>
+  {{- end -}}
+</div>

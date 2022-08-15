@@ -1,0 +1,12 @@
+name = "firewithin"
+license = "GNU"
+licenselink = "https://github.com/acbilson/firewithin/blob/master/LICENSE"
+description = "Firewithin is a Hugo theme built special for Matthew Gonzales at http://firewithin.studio"
+homepage = "http://firewithin.studio/"
+tags = ["Portfolio", "Personal", "Minimal", "Simple", "Clean", "Modern"]
+features = ["Responsive"]
+min_version = "0.71.1"
+
+[author]
+name = "Alex Bilson"
+homepage = "https://alexbilson.dev"

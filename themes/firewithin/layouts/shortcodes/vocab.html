@@ -1,0 +1,18 @@
+{{- $word := .Get "word" -}}
+{{- $term := .Get "term" -}}
+{{- $phonetic := .Get "phonetic" -}}
+{{- $match := .Get "match" -}}
+{{- $example := .Get "example" -}}
+{{- $origin := .Get "origin" -}}
+<div class="vocab">
+  <p class="vocab__title">
+    <span class="vocab__word">{{- $word -}}</span>
+    <span class="vocab__term">{{- $term -}}</span>
+  </p>
+  <p class="vocab__summary">
+    <span class="vocab__phonetic">{{- $phonetic -}}.</span>
+    <span class="vocab__definition">{{- with $match -}}{{- . -}}.{{- end -}}</span>
+    <span class="vocab__example">"{{- $example -}}"</span>
+    <span class="vocab__origin">–– {{- $origin -}}</span>
+  </p>
+</div>

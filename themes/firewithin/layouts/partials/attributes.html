@@ -1,0 +1,39 @@
+<div class="attributes">
+  <ul class="attributes__list">
+      {{- if isset .Params "author" -}}
+        {{- $author := "Alex Bilson" -}}{{- if isset .Params "author" -}}{{- $author = .Params.author -}}{{- end -}}
+        <li>By: <a rel="author" class="attributes__author p-author">{{- $author -}}</a></li>
+      {{- end -}}
+      {{- if isset .Params "date" -}}
+        <li>Posted: <time class="dt-published" datetime="{{ .Date.Format "2006-01-02" }}">{{- .Date.Format "Jan 2, 2006" -}}</time></li>
+        <li>Modified: <time datetime="{{ .Lastmod.Format "2006-01-02" }}">{{- .Lastmod.Format "Jan 2, 2006" -}}</time></li>
+      {{- end -}}
+  </ul>
+
+  <!-- adds second set of attrs if they exist -->
+  {{- if (or ( isset .Params "epistemic" ) ( isset .Params "tags" )) -}}
+    <ul class="attributes__list">
+    {{- if isset .Params "epistemic" -}}
+      {{- $epVal := "🌱" -}}
+      {{- with .Params.epistemic -}}
+        {{- if eq . "sprout" -}}
+      {{- $epVal = "🌿" -}}
+        {{- else if eq . "plant" -}}
+      {{- $epVal = "🪴" -}}
+        {{- end -}}
+      {{- end -}}
+      <li>Epistemic: <span>{{ $epVal }}(<a href="/plants/meta/epistemic-notes-reveal-growth">{{ .Params.epistemic }}</a>)</span></li>
+    {{- end -}}
+
+    {{- if isset .Params "tags" -}}
+        <li>Tags:
+        {{- range $name := .Param "tags" -}}
+          {{- with $.Site.GetPage (printf "/%s/%s" "tags" ( $name | urlize)) -}}
+            <a class="attributes__link p-category" href="{{ .Permalink }}">{{- $name -}}</a>
+          {{- end -}}
+        {{- end -}}
+        </li>
+    {{- end -}}
+    </ul>
+  {{- end -}}
+</div>

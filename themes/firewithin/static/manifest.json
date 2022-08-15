@@ -1,0 +1,13 @@
+{
+  "name": "Of Chaos and Order",
+  "short_name": "Of Chaos and Order",
+  "start_url": ".",
+  "display": "browser",
+  "background_color": "#fff",
+  "description": "Alex Bilson's personal website",
+  "icons": [{
+    "src": "images/favicon.ico",
+    "sizes": "16x16",
+    "type": "image/ico"
+  }]
+}

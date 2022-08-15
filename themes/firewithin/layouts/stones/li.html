@@ -1,0 +1,6 @@
+{{- $title := .Title -}}{{- if eq $title "" -}}{{- $title = humanize .File.BaseFileName -}}{{- end -}}
+<article class="stone-card">
+  <h2 class="stone-card__title"><a class="stone-card__link" href="{{ .Permalink }}">{{- $title -}}</a></h2>
+  <p class="stone-card__summary">{{- .Summary | htmlUnescape -}}{{- if .Truncated -}}&mldr;{{- end -}}</p>
+  {{ partial "citation.html" . }}
+</article>

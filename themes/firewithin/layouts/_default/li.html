@@ -1,0 +1,5 @@
+{{- $title := .Title -}}{{- if eq $title "" -}}{{- $title = humanize .File.BaseFileName -}}{{- end -}}
+<article class="basic-card">
+  <h2><a class="basic-card__link" href="{{- .Permalink -}}">{{- $title -}}</a></h2>
+  <p>{{- .Summary | htmlUnescape -}}{{- if .Truncated -}}&mldr;{{- end -}}</p>
+</article>

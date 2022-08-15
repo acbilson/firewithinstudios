@@ -1,0 +1,50 @@
+.basic-page {
+	&__title {
+		text-transform: capitalize;
+	}
+	&__content {
+		display: grid;
+		grid-gap: $base-size * 3;
+		grid-template-columns: 100%;
+		@media screen and (min-width: $phone-width) {
+			grid-template-columns: repeat($column-count, auto);
+			grid-gap: $base-size * 10;
+		}
+	}
+}
+
+.basic {
+	&__title {
+		@include title-heading;
+	}
+	&__ref {
+		font-size: $font-md;
+		text-align: right;
+	}
+	&__source {
+		font-style: italic;
+	}
+	&__tags {
+		text-align: center;
+	}
+	&__toc {
+		position: relative;
+		width: inherit;
+	}
+	&__link + &__link {
+		margin: 0 $base-size;
+	}
+	&__link:last-of-type {
+		margin-right: 0;
+	}
+	&__link:first-of-type {
+		margin-left: $base-size;
+	}
+}
+
+.basic-card {
+	&__link {
+		text-decoration: none;
+		text-transform: capitalize;
+	}
+}

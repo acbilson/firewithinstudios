@@ -1,0 +1,45 @@
+{{- $title := .Get "title" -}}
+{{- $headers := .Get "headers" -}}
+{{- $rows := .Get "rows" -}}
+{{- $examples := .Get "examples" -}}
+<div class="chart">
+  <h2 class="chart__title">{{- $title -}}</h2>
+  <!-- creates a table
+
+      the header format is:
+      "name|date|type"
+
+      the row format is:
+      "name|acumen"
+
+      the examples format is:
+      "name|link^name|link"
+  -->
+  <table><tbody>
+    <tr>
+    {{- range split $headers "|" -}}
+      <th class="chart__header">{{- . -}}</th>
+    {{- end -}}
+    </tr>
+    {{- range split $rows "^" -}}
+    <tr>
+      {{- $row := split . "|" -}}
+      {{- $name := index $row 0 -}}
+      {{- $acumen := index $row 1 -}}
+      <td class="chart__cell">{{- $name -}}</td>
+      <td class="chart__cell"><meter value="{{- $acumen -}}" min="1" max="10">{{- $acumen}} out of 10</meter></td>
+    </tr>
+    {{- end -}}
+  </tbody></table>
+  {{- if $examples -}}
+    <p class="chart__examples">Examples:</p>
+    <ul class="chart__list">
+    {{- range split $examples "^" -}}
+      {{- $example := split . "|" -}}
+      {{- $name := index $example 0 -}}
+      {{- $link := index $example 1 -}}
+      <li class="chart__item"><a href="{{- $link -}}">{{- $name -}}</a></li>
+    {{- end -}}
+    </ul>
+  {{- end -}}
+</div>

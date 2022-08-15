@@ -1,0 +1,29 @@
+{{- $darkmodejs := resources.Get "js/darkmode.js" -}}
+{{- $navbarjs := resources.Get "js/nav-bar.js" -}}
+
+  <!-- adds event handler to let the user change the color scheme -->
+<script src="{{ $darkmodejs.Permalink }}"></script>
+
+<!-- adds dropdown navigation -->
+<script src="{{ $navbarjs.Permalink }}"></script>
+
+  <!-- adds the remark42 comment box to the page if a <div id="remark42"> exists and comments are set in the post's metadata -->
+{{- if .Params.comments -}}
+<script>
+  var remark_config = {
+    host: "https://comments.alexbilson.dev",
+    site_id: "remark42",
+    url: {{ .Permalink }},
+    theme: localStorage.getItem('color-mode')
+  };
+
+  (function(c) {
+    for(var i = 0; i < c.length; i++){
+      var d = document, s = d.createElement('script');
+      s.src = remark_config.host + '/web/' + c[i] +'.js';
+      s.defer = true;
+      (d.head || d.body).appendChild(s);
+    }
+  })(remark_config.components || ['embed']);
+</script>
+{{- end -}}

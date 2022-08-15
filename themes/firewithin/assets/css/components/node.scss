@@ -1,0 +1,31 @@
+.diagram-node {
+    >a>text {
+        font-size: $font-sm;
+        fill: transparent;
+    }
+}
+
+.diagram-node:hover {
+    >circle {
+        fill: transparent;
+    }
+    >a>text {
+        fill: black;
+    }
+}
+
+.diagram-link {
+    stroke: lightgray;
+}
+
+.diagram-posts {
+    fill: blue;
+}
+
+.diagram-comments {
+    fill: yellow;
+}
+
+.diagram-both {
+    fill: green;
+}

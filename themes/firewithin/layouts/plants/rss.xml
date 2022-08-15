@@ -1,0 +1,30 @@
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>{{ .Site.Title }} - {{ .Title }}</title>
+    <link>{{ .Permalink }}</link>
+    <description>These are all my Evergreen notes. You may peruse them as a list, but they’re best understood through the links and backlinks that connect them.</description>
+    <generator>Hugo -- gohugo.io</generator>
+    {{ with .Site.LanguageCode }}
+      <language>{{.}}</language>
+    {{end}}
+    <webMaster>Alex Bilson (acbilson@gmail.com)</webMaster>
+    <copyright>2020</copyright>
+   {{ if not .Date.IsZero }}
+      <lastBuildDate>{{ .Date.Format "Mon, 02 Jan 2006 15:04:05 -0700" | safeHTML }}</lastBuildDate>
+   {{ end }}
+   {{ with .OutputFormats.Get "RSS" }}
+     {{ printf "<atom:link href=%q rel=\"self\" type=%q />" .Permalink .MediaType | safeHTML }}
+   {{ end }}
+
+   {{- range .Pages -}}
+    <item>
+      <title>{{ .Title }}</title>
+      <link>{{ .Permalink }}</link>
+      <pubDate>{{ .Date.Format "Mon, 02 Jan 2006 15:04:05 -0700" | safeHTML }}</pubDate>
+      <author>{{ if isset .Params "author" }}{{ .Params.author }}{{ else }}Alex Bilson{{ end }}</author>
+      <guid>{{ .Permalink }}</guid>
+      <description>{{ .Summary | html }}</description>
+    </item>
+    {{- end }}
+  </channel>
+</rss>

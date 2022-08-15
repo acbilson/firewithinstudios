@@ -1,0 +1,29 @@
+{{- $darkmodejs := resources.Get "js/darkmode.js" -}}
+{{- $navbarjs := resources.Get "js/nav-bar.js" -}}
+<!DOCTYPE html>
+<html lang="{{ .Site.LanguageCode }}" dir="ltr" color-mode="{{ .Site.Params.defaultColorMode }}">
+{{ partialCached "head.html" . }}
+<body class="container">
+  {{ partialCached "nav-bar.html" . }}
+
+  <section class="container-full">
+  <div class="search-bar">
+  {{ partial "search-form.html" . }}
+  </div>
+
+  <ul id="results">
+      <li>
+          Enter a keyword above to search this site.
+
+          <p>
+          Kudos to Victoria Drake for the <a href="https://victoria.dev/blog/add-search-to-hugo-static-sites-with-lunr/">help</a>!
+          </p>
+      </li>
+  </ul>
+  {{ partial "search-index.html" . }}
+  </section>
+  {{ partialCached "foot.html" . }}
+</body>
+<script src="{{ $navbarjs.Permalink }}"></script>
+<script src="{{ $darkmodejs.Permalink }}"></script>
+</html>
