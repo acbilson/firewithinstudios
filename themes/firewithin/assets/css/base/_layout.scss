@@ -10,6 +10,9 @@
 	&-menu {
 		grid-column-start: leftedge;
 		grid-column-end: leftbar;
+
+		// start at the top
+		align-self: start;
 	}
 
 	// all cells except the right sidebar and the footer
