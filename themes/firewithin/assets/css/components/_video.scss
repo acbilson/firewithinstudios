@@ -1,0 +1,11 @@
+.video-page {
+	&__videos {
+		display: flex;
+		flex-flow: column wrap;
+
+		.video {
+			max-width: 900px; // default: 560px
+			min-width: 400px;
+		}
+	}
+}

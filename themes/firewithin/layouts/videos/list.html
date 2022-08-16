@@ -5,14 +5,12 @@
 
 	{{- partialCached "menu.html" . -}}
 
-  <section class="basic-page container-content">
+  <section class="video-page container-content">
   {{- with .Content -}}
-    <div class="home-page__content">
-		 <p>{{- . -}}</p>
-	 </div>
+	  <p>{{- . -}}</p>
   {{- end -}}
 
-    <div class="basic-page__content">
+    <div class="video-page__videos">
     {{- range .Pages -}}
       {{- .Render "li" -}}
     {{- end -}}

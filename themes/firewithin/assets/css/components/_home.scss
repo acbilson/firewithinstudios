@@ -3,10 +3,4 @@
 		display: flex;
 		flex-flow: column nowrap;
 	}
-	&__img {
-		margin: auto;
-		> img {
-			border-radius: 50%;
-		}
-	}
 }
