@@ -4,35 +4,43 @@
 	ul {
 		display: flex;
 		flex-flow: column nowrap;
-		background-color: green;
+		justify-content: space-evenly;
 	}
 
 	li {
 		list-style: none;
 	}
 
-	li.main {
-		background-color: blue;
+	li + li {
+		margin-top: 1em;
 	}
 
 	a {
 		font-family: $font-family-condensed;
-		font-size: $font-md - $base-size;
+		font-size: $font-xl;
 		text-decoration: none;
 		white-space: nowrap;
 		width: 100%;
+		color: var(--paragraph);
 		&:hover {
-			color: orange;
+			color: var(--color-link);
 		}
 	}
 
 	@media screen and (max-width: $breakpoint-md) {
-		ul {
+		margin: auto;
 
-		flex-flow: row wrap;
+		ul {
+			flex-flow: row wrap;
+			padding-left: 0px;
+		}
+
+		li + li {
+			margin-top: unset;
 		}
 
 		a {
+			font-size: $font-lg;
 			padding: 0.8em 1.5em;
 		}
 	}

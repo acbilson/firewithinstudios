@@ -6,9 +6,6 @@
 	{{- partialCached "menu.html" . -}}
 
   <section class="basic-page container-content">
-		{{- with .Title -}}
-		 <h1 class="basic-page__title">{{- . -}}</h1>
-		{{- end -}}
   {{- with .Content -}}
     <div class="home-page__content">
 		 <p>{{- . -}}</p>
@@ -22,6 +19,7 @@
     </div>
   </section>
 
+  {{ partialCached "foot.html" . }}
   {{ partialCached "scripts.html" . }}
 </body>
 </html>

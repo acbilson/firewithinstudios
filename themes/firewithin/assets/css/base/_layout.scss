@@ -2,7 +2,7 @@
 	display: grid;
 	// columns have two variable sidebar slots and fills the center
 	grid-template-columns: [leftedge] 20% [leftbar] 80% [rightedge];
-	grid-template-rows: [topedge] 1fr [bottombar] 100px [bottomedge];
+	grid-template-rows: [topedge] 100px [topbar] 1fr [bottombar] 100px [bottomedge];
 
 	// centers cell contents by default
 	place-items: center;
@@ -12,7 +12,7 @@
 		grid-column-start: leftedge;
 		grid-column-end: leftbar;
 		grid-row-start: topedge;
-		grid-row-end: bottom-edge;
+		grid-row-end: bottomedge;
 
 		// start at the top
 		align-self: start;
@@ -37,19 +37,13 @@
 		grid-row-end: bottomedge;
 
 		// start at the top
-		align-self: start;
-	}
-
-
-	@media screen and (max-width: $breakpoint-lg) {
-		// columns have two variable sidebar slots and fills the center
-		grid-template-columns: [leftedge] 20% [leftbar] 80% [rightedge];
+		align-self: flex-start;
 	}
 
 	@media screen and (max-width: $breakpoint-md) {
 		// columns have two variable sidebar slots and fills the center
-		grid-template-columns: [leftedge] 100% [rightedge];
-		grid-template-rows: [topedge] 200px [topbar] 1fr [bottomedge];
+		grid-template-columns: [leftedge] [leftbar] 100% [rightedge];
+		grid-template-rows: [topedge] 100px [topbar] 1fr [bottombar] 100px [bottomedge];
 
 		&-menu {
 			grid-column-start: leftedge;
@@ -62,15 +56,14 @@
 			grid-column-start: leftedge;
 			grid-column-end: rightedge;
 			grid-row-start: topbar;
-			grid-row-end: bottomedge;
+			grid-row-end: bottombar;
 		}
 
 		&-footer {
 			grid-column-start: leftedge;
 			grid-column-end: rightedge;
-			grid-row-start: topbar;
+			grid-row-start: bottombar;
 			grid-row-end: bottomedge;
-
 		}
 	}
 }
