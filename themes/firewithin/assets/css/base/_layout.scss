@@ -2,6 +2,7 @@
 	display: grid;
 	// columns have two variable sidebar slots and fills the center
 	grid-template-columns: [leftedge] 20% [leftbar] 80% [rightedge];
+	grid-template-rows: [topedge] 1fr [bottombar] 100px [bottomedge];
 
 	// centers cell contents by default
 	place-items: center;
@@ -10,6 +11,8 @@
 	&-menu {
 		grid-column-start: leftedge;
 		grid-column-end: leftbar;
+		grid-row-start: topedge;
+		grid-row-end: bottom-edge;
 
 		// start at the top
 		align-self: start;
@@ -19,10 +22,24 @@
 	&-content {
 		grid-column-start: leftbar;
 		grid-column-end: rightedge;
+		grid-row-start: topedge;
+		grid-row-end: bottombar;
 
 		// start at the top
 		align-self: start;
 	}
+
+	// along the bottom
+	&-footer {
+		grid-column-start: leftbar;
+		grid-column-end: rightedge;
+		grid-row-start: bottombar;
+		grid-row-end: bottomedge;
+
+		// start at the top
+		align-self: start;
+	}
+
 
 	@media screen and (max-width: $breakpoint-lg) {
 		// columns have two variable sidebar slots and fills the center
@@ -46,6 +63,14 @@
 			grid-column-end: rightedge;
 			grid-row-start: topbar;
 			grid-row-end: bottomedge;
+		}
+
+		&-footer {
+			grid-column-start: leftedge;
+			grid-column-end: rightedge;
+			grid-row-start: topbar;
+			grid-row-end: bottomedge;
+
 		}
 	}
 }

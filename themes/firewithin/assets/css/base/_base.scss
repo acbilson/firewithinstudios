@@ -98,8 +98,6 @@ img {
 	width: 100%;
 	height: auto;
 	margin: ($base-size * 5) 0;
-	border-radius: $rounded-sm;
-	@include hover-md();
 }
 
 video {
