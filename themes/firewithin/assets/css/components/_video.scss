@@ -1,11 +1,24 @@
 .video-page {
 	&__videos {
 		display: flex;
-		flex-flow: column wrap;
+		flex-flow: row wrap;
+		justify-content: space-evenly;
 
 		.video {
 			max-width: 900px; // default: 560px
 			min-width: 400px;
+		}
+	}
+
+	.title {
+		text-align: center;
+		margin: 0;
+		a {
+			text-decoration: none;
+			color: black;
+		}
+		a:hover {
+			color: var(--color-link);
 		}
 	}
 }
