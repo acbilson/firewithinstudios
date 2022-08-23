@@ -1,23 +1,23 @@
 <!DOCTYPE html>
 <html lang="{{ .Site.LanguageCode }}" dir="ltr" color-mode="{{ .Site.Params.defaultColorMode }}">
 {{ partialCached "head.html" . }}
-<body class="container">
+<body>
 
-	{{- partialCached "menu.html" . -}}
+<section class="video-page container-content">
 
-  <section class="video-page container-content">
-  {{- with .Content -}}
-	  <p>{{- . -}}</p>
-  {{- end -}}
+<div class="title"><a href="/"><h1 class="title">Matthew Gonzales</h1></a></div>
 
-    <div class="video-page__videos">
-    {{- range .Pages -}}
-      {{- .Render "li" -}}
-    {{- end -}}
-    </div>
-  </section>
+{{- with .Content -}}
+	<p>{{- . -}}</p>
+{{- end -}}
 
-  {{ partialCached "foot.html" . }}
-  {{ partialCached "scripts.html" . }}
+<div class="video-page__videos">
+{{- range .Pages -}}
+	{{- .Render "li" -}}
+{{- end -}}
+</div>
+</section>
+
+{{ partialCached "scripts.html" . }}
 </body>
 </html>

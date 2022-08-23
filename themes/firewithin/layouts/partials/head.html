@@ -20,15 +20,6 @@
   <!-- favicon.ico -->
   <link rel="shortcut icon" href="{{ .Site.BaseURL }}/favicon.ico" />
 
-  <!-- adds PWA manifest -->
-  <link rel="manifest" href="{{ .Site.BaseURL }}/manifest.json">
-
-  <!-- adds supported RSS feeds -->
-  {{ range .AlternativeOutputFormats -}}
-  <link rel="{{ .Rel }}" type="{{ .MediaType.Type | html }}" href="{{ $.Site.BaseURL }}/logs/index.xml" title="{{ $.Site.Title }} - Ship's Log" />
-  <link rel="{{ .Rel }}" type="{{ .MediaType.Type | html }}" href="{{ $.Site.BaseURL }}/plants/index.xml" title="{{ $.Site.Title }} - Notes" />
-  {{ end -}}
-
   <!-- sets color scheme before page load -->
   <script>
     if (localStorage.getItem('color-mode')) {
@@ -37,15 +28,15 @@
         document.documentElement.setAttribute('color-mode', 'minimal');
         localStorage.setItem('color-mode', 'minimal');
       } else if (localStorage.getItem('color-mode') === 'dark') {
-        document.documentElement.setAttribute('color-mode', 'void');
-        localStorage.setItem('color-mode', 'void');
+        document.documentElement.setAttribute('color-mode', 'minimal');
+        localStorage.setItem('color-mode', 'minimal');
       } else {
         document.documentElement.setAttribute('color-mode', localStorage.getItem('color-mode'));
       }
     } else {
       if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
-        document.documentElement.setAttribute('color-mode', 'void');
-        localStorage.setItem('color-mode', 'void');
+        document.documentElement.setAttribute('color-mode', 'minimal');
+        localStorage.setItem('color-mode', 'minimal');
       } else {
         document.documentElement.setAttribute('color-mode', 'minimal');
         localStorage.setItem('color-mode', 'minimal');
