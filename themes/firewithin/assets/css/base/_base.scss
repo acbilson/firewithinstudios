@@ -74,7 +74,6 @@ input[type="submit"] {
 	border-color: var(--color-stroke);
 	border-radius: $rounded-sm;
 	padding: $base-size;
-	@include hover-sm();
 }
 
 button {
@@ -82,7 +81,6 @@ button {
 	background-color: var(--color-link);
 	border-color: var(--color-stroke);
 	border-radius: $rounded-sm;
-	@include hover-sm();
 }
 
 select {
@@ -90,7 +88,6 @@ select {
 	background-color: var(--color-link);
 	border-color: var(--color-stroke);
 	border-radius: $rounded-sm;
-	@include hover-sm();
 }
 
 img {

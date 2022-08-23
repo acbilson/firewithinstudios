@@ -1,86 +1,10 @@
 :root {
-	// jungle pallette
+	// minimal pallette
 	--color-midnight: rgb(22, 22, 26);
-	--color-forest-green: rgb(0, 70, 67);
-	--color-teal: rgb(171, 209, 198);
-	--color-sunset-red: rgb(225, 97, 98);
-	--color-faded-orange: rgb(249, 188, 96);
 	--color-eggshell: rgb(255, 255, 252);
-
-	// dark void pallette
-	--color-magenta: rgb(127, 90, 240);
-	--color-pitch-black: rgb(1, 1, 1);
-	--color-slate: rgb(148, 161, 178);
-	--color-jungle-green: rgb(44, 182, 125);
-
-	// sunshine pallette
 	--color-royalty: rgb(39, 35, 67);
-	--color-sunshine: rgb(255, 216, 3);
-
-	// fall pallette
-	--color-pumpkin-orange: rgb(255, 107, 18);
 	--color-navy-blue: navy;
-	--color-cream: rgb(245, 240, 196);
-	--color-army-green: rgb(62, 62, 10);
-	--color-light-tan: rgb(255, 222, 222);
-	--color-maroon: maroon;
-
-	// winter pallette
-	// - merry-red
-	// - snow-white
-	// - gold
-	// - pine-green
-	// - chocolate-brown
-
-	// spring pallette
-	// - pastel
-
-	// summer pallette
-	// - lime-green
-	// - sunflower
-	// - midnight
-	// - navy
 }
-
-:root[color-mode="jungle"] {
-	--color-background: var(--color-forest-green);
-	--color-stroke: var(--color-faded-orange);
-
-	--color-headline: var(--color-eggshell);
-	--color-paragraph: var(--color-teal);
-	--color-aside: var(--color-teal);
-	--color-link: var(--color-sunset-red);
-
-	// theme-specific formatting
-	--minimal-border: $base-size solid black;
-}
-
-:root[color-mode="void"] {
-	--color-background: var(--color-midnight);
-	--color-stroke: var(--color-pitch-black);
-
-	--color-headline: var(--color-eggshell);
-	--color-paragraph: var(--color-slate);
-	--color-aside: var(--color-slate);
-	--color-link: var(--color-magenta);
-
-	// theme-specific formatting
-	--minimal-border: none;
-}
-
-:root[color-mode="fall"] {
-	--color-background: var(--color-cream);
-	--color-stroke: var(--color-midnight);
-
-	--color-headline: var(--color-pumpkin-orange);
-	--color-paragraph: var(--color-navy-blue);
-	--color-aside: var(--color-navy-blue);
-	--color-link: var(--color-magenta);
-
-	// theme-specific formatting
-	--minimal-border: none;
-}
-
 :root[color-mode="minimal"] {
 	--color-background: var(--color-eggshell);
 	--color-stroke: var(--color-midnight);
@@ -89,9 +13,6 @@
 	--color-paragraph: var(--color-midnight);
 	--color-aside: var(--color-midnight);
 	--color-link: var(--color-navy-blue);
-
-	// theme-specific formatting
-	--minimal-border: none;
 }
 
 // all sizes are multiples of this value
@@ -118,4 +39,3 @@ $screen-width-sm: 90%;
 $screen-width-lg: 100%;
 
 $rounded-sm: 0.3em;
-$column-count: 2;
