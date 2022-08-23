@@ -1,8 +1,7 @@
 <!DOCTYPE html>
 <html lang="{{ .Site.LanguageCode }}" dir="ltr" color-mode="{{ .Site.Params.defaultColorMode }}">
 {{ partialCached "head.html" . }}
-<body class="container">
-{{- partialCached "menu.html" . -}}
+<body>
 
 <section class="video-page container-content">
 
@@ -19,7 +18,6 @@
 </div>
 </section>
 
-{{ partialCached "foot.html" . }}
 {{ partialCached "scripts.html" . }}
 </body>
 </html>

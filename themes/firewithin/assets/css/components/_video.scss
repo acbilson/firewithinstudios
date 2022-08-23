@@ -1,17 +1,23 @@
 .video-page {
 	&__videos {
+		width: 100%;
 		display: flex;
 		flex-flow: row wrap;
-		justify-content: space-evenly;
+		justify-content: center;
 
 		.video {
-			max-width: 900px; // default: 560px
-			min-width: 400px;
+			margin: 0;
+			width: 400px;
+		}
+
+		.video + .video {
+			margin-left: 3px;
 		}
 	}
 
 	.title {
 		text-align: center;
+		font-size: 60px;
 		margin: 0;
 		a {
 			text-decoration: none;
