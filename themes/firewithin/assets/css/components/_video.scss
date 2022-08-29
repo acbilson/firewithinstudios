@@ -27,4 +27,46 @@
 			color: var(--color-link);
 		}
 	}
+
+	.placeholder {
+		margin: 0;
+		margin-top: 3px;
+		width: 400px;
+		height: 315px;
+		border: 2px inset black;
+	}
+
+	.placeholder + .placeholder {
+		margin-left: 3px;
+	}
+}
+
+.video-entry {
+	.content-container {
+		display: flex;
+		flex-flow: row nowrap;
+	}
+
+	.content {
+		width: 30%;
+		margin-left: 3%;
+	}
+
+	.video-content {
+		width: 70%;
+	}
+
+	@media screen and (max-width: $breakpoint-md) {
+		.content-container {
+			flex-flow: column nowrap;
+		}
+
+		.content {
+			width: 100%;
+		}
+
+		.video-content {
+			width: 100%;
+		}
+	}
 }

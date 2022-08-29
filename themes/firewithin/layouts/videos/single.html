@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="{{ .Site.LanguageCode }}" dir="ltr" color-mode="{{ .Site.Params.defaultColorMode }}">
+{{ partialCached "head.html" . }}
+<body>
+
+{{- $title := .Title -}}{{- if eq $title "" -}}{{- $title = humanize .File.BaseFileName -}}{{- end -}}
+<section class="container-center">
+<article class="video-entry h-entry">
+<h1 class="title p-name">{{ $title }}</h1>
+<a class="u-url" href="{{ .Permalink }}" hidden></a>
+
+<div class="content-container e-content">
+<div class="content">
+{{ .Content }}
+</div>
+{{- $id := .Params.id -}}
+<div class="video-content">
+<figure class="single-video">
+<iframe width="100%" height="630" loading="lazy" src="https://www.youtube.com/embed/{{$id}}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+</figure>
+</div>
+</div>
+
+</article>
+</section>
+{{ partialCached "scripts.html" . }}
+</body>
+</html>
